@@ -1,0 +1,99 @@
+/* General body and page styles */
+nav {
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center the navigation items horizontally */
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #0056b3;
+}
+
+
+
+body, html {
+    height: 100%; /* Full height for the HTML and body */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Typography */
+    background: #f4f4f5; /* Light grey background */
+    text-align: center; /* Ensures text aligns center */
+}
+
+/* Header styles */
+h1 {
+    color: #0056b3; /* Blue color for header */
+    font-size: 28px; /* Increased font size for visibility */
+    margin-bottom: 20px; /* Space between header and form */
+}
+
+/* Form styling */
+form {
+    background: #ffffff; /* White background for the form */
+    padding: 30px; /* Padding inside the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for 3D effect */
+    width: 100%; /* Full width to respect the container's size */
+    max-width: 400px; /* Maximum width of the form */
+}
+
+/* Remaining styles for inputs and button */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 90%; /* Full width inputs */
+    padding: 9px; /* Comfortable padding */
+    margin-top: 5px; /* Margin top for spacing */
+    margin-bottom: 15px; /* Margin bottom for spacing */
+    border: 2px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded borders */
+    transition: border-color 0.3s; /* Smooth transition for focus */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #0056b3; /* Highlight focus with blue */
+    outline: none; /* Remove default focus outline */
+}
+
+button {
+    width: 100%; /* Full width button */
+    padding: 10px; /* Padding for button */
+    background-color: #0084ff; /* Bright blue background */
+    color: white; /* White text for contrast */
+    font-size: 16px; /* Readable font size */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth color transition on hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

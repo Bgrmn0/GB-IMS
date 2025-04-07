@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Inventory</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="Index.html">Home</a></li>
+            <li><a href="Index.html">Add Inventory</a></li>
+            <li><a href="../ViewInventory/View-inventory.html">View Inventory</a></li>
+            <li><a href="../EditInventory/edit-inventory.html">Edit Inventory</a></li>
+            <li><a href="../SearchInventory/search-inventory.html">Search Inventory</a></li>
+        </ul>
+    </nav>
+
+    <h1>Add Inventory Item</h1>
+    <form id="addInventoryForm">
+        <label for="make">Make:</label>
+        <input type="text" id="make" name="make" required>
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="cost">Cost:</label>
+        <input type="number" id="cost" name="cost" required>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="inStock">In Stock</option>
+            <option value="sold">Sold</option>
+            <option value="Out of Stock">Out of Stock</option>
+        </select>
+
+        <button type="submit">Add Item</button>
+    </form>
+
+    
+    <script src="app.js"></script>
+
+</body>
+</html>

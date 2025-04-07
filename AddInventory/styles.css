@@ -10,7 +10,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center; /* Center the navigation items horizontally */
+    justify-content: center; 
 }
 
 nav ul li {
@@ -31,34 +31,33 @@ nav ul li a:hover {
 
 
 body, html {
-    height: 100%; /* Full height for the HTML and body */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    display: flex; /* Enable flexbox */
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Typography */
-    background: #f4f4f5; /* Light grey background */
-    text-align: center; /* Ensures text aligns center */
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #f4f4f5; 
+    text-align: center; 
 }
 
 /* Header styles */
 h1 {
-    color: #0056b3; /* Blue color for header */
-    font-size: 28px; /* Increased font size for visibility */
-    margin-bottom: 20px; /* Space between header and form */
+    color: #0056b3;
+    font-size: 28px; 
+    margin-bottom: 20px;
 }
 
 /* Form styling */
 form {
-    background: #ffffff; /* White background for the form */
-    padding: 30px; /* Padding inside the form */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for 3D effect */
-    width: 100%; /* Full width to respect the container's size */
-    max-width: 400px; /* Maximum width of the form */
-}
+    background: #ffffff; 
+    padding: 30px; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; 
+    max-width: 400px; 
 
 /* Remaining styles for inputs and button */
 input[type="text"],
@@ -66,34 +65,34 @@ input[type="number"],
 textarea,
 select {
     width: 90%; /* Full width inputs */
-    padding: 9px; /* Comfortable padding */
-    margin-top: 5px; /* Margin top for spacing */
-    margin-bottom: 15px; /* Margin bottom for spacing */
-    border: 2px solid #ccc; /* Subtle border */
-    border-radius: 4px; /* Rounded borders */
-    transition: border-color 0.3s; /* Smooth transition for focus */
+    padding: 9px; 
+    margin-top: 5px; 
+    margin-bottom: 15px; 
+    border: 2px solid #ccc; 
+    border-radius: 4px; 
+    transition: border-color 0.3s; 
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus,
 textarea:focus,
 select:focus {
-    border-color: #0056b3; /* Highlight focus with blue */
-    outline: none; /* Remove default focus outline */
+    border-color: #0056b3; 
+    outline: none;
 }
 
 button {
-    width: 100%; /* Full width button */
-    padding: 10px; /* Padding for button */
-    background-color: #0084ff; /* Bright blue background */
+    width: 100%; 
+    padding: 10px; 
+    background-color: #0084ff; 
     color: white; /* White text for contrast */
-    font-size: 16px; /* Readable font size */
+    font-size: 16px; 
     border: none; /* No border */
-    border-radius: 4px; /* Rounded corners for the button */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth color transition on hover */
+    border-radius: 4px; 
+    cursor: pointer; /* hover */
+    transition: background-color 0.3s; /* transition on hover */
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
+    background-color: #0056b3; /*  blue on hover */
+}}

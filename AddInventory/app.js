@@ -1,5 +1,5 @@
 document.getElementById('addInventoryForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent the form from submitting the default way
+    event.preventDefault();  // Prevent submitting the default way
 
     const formData = {
         make: document.getElementById('make').value,

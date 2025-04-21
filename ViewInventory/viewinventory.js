@@ -1,13 +1,28 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const inventoryItems = [
-        { make: 'Kubota', model: 'BX2380', description: 'Compact tractor.', cost: '10000', status: 'in Stock' },
-        { make: 'Kubota', model: 'L4701', description: 'Standard tractor.', cost: '20000', status: 'in Stock' }
-    ];
-
-    const inventoryList = document.getElementById('inventoryList');
-    inventoryItems.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.innerHTML = `<strong>${item.make} ${item.model}</strong> - ${item.description} - $${item.cost} - ${item.status}`;
-        inventoryList.appendChild(itemDiv);
-    });
-});
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('/inventory')
+      .then(response => response.json())
+      .then(data => {
+        const inventoryList = document.getElementById('inventoryList');
+        if (data.length === 0) {
+          inventoryList.innerHTML = '<p>No inventory items found.</p>';
+          return;
+        }
+  
+        data.forEach(item => {
+          const itemDiv = document.createElement('div');
+          itemDiv.innerHTML = `
+            <strong>${item.make} ${item.model}</strong><br>
+            ${item.description}<br>
+            Cost: $${item.cost}<br>
+            Quantity: ${item.quantity}<br>
+            Status: ${item.status}<br><br>
+          `;
+          inventoryList.appendChild(itemDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching inventory:', error);
+        document.getElementById('inventoryList').innerText = 'Failed to load inventory.';
+      });
+  });
+  

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Inventory</title>
+  <link rel="stylesheet" href="../SearchInventory/searchinventory.css" />
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="../AddInventory/Index.html">Home</a></li>
+      <li><a href="../AddInventory/Index.html">Add Inventory</a></li>
+      <li><a href="../ViewInventory/View-inventory.html">View Inventory</a></li>
+      <li><a href="../EditInventory/edit-inventory.html">Edit Inventory</a></li>
+      <li><a href="../SearchInventory/search-inventory.html">Search Inventory</a></li>
+    </ul>
+  </nav>
+
+  <h1>Search Inventory</h1>
+  <form id="searchForm">
+    <input type="text" id="searchQuery" placeholder="Enter search term..." required />
+    <button type="submit">Search</button>
+  </form>
+
+  <div id="searchResults"></div>
+
+  <script src="../SearchInventory/searchInventory.js"></script>
+</body>
+</html>
+

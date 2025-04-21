@@ -4,13 +4,13 @@ const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const PORT = 3000;
 
-// parse JSON bodies
+// Parse JSON bodies
 app.use(express.json());
 
-// Serve static files from directory
-app.use(express.static(path.join(__dirname, 'GermanBliss', 'AddInventory')));
+// Serve static files from the GermanBliss folder
+app.use(express.static(path.join(__dirname, 'GermanBliss')));
 
-// Database initialize
+// Connect to SQLite database
 const db = new sqlite3.Database('./data.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
     if (err) {
         console.error('Error connecting to the database:', err.message);
@@ -34,17 +34,12 @@ const db = new sqlite3.Database('./data.db', sqlite3.OPEN_READWRITE | sqlite3.OP
     });
 });
 
-// Serve Index.html at the root URL
+// Serve homepage
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'GermanBliss', 'AddInventory', 'Index.html'), err => {
-        if (err) {
-            console.error("Failed to send file:", err);
-            res.status(500).send("An error occurred while trying to serve the file.");
-        }
-    });
+    res.sendFile(path.join(__dirname, 'GermanBliss', 'AddInventory', 'Index.html'));
 });
 
-// Define rout for adding inventory
+// Add inventory
 app.post('/add-inventory', (req, res) => {
     const { make, model, description, cost, quantity, status } = req.body;
     const sql = `INSERT INTO inventory (make, model, description, cost, quantity, status) VALUES (?, ?, ?, ?, ?, ?)`;
@@ -58,12 +53,40 @@ app.post('/add-inventory', (req, res) => {
     });
 });
 
-// Handle 404
-app.use(function(req, res) {
-    res.status(404).send("Sorry, can't find that!");
+// View inventory
+app.get('/inventory', (req, res) => {
+    const sql = "SELECT * FROM inventory";
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error("Error retrieving inventory:", err.message);
+            res.status(500).json({ error: err.message });
+        } else {
+            res.json(rows);
+        }
+    });
 });
 
-// Start the server
+// Search inventory
+app.get('/search-inventory', (req, res) => {
+    const { query } = req.query;
+    const sql = `SELECT * FROM inventory WHERE make LIKE ? OR model LIKE ? OR description LIKE ?`;
+    const wildcard = `%${query}%`;
+    db.all(sql, [wildcard, wildcard, wildcard], (err, rows) => {
+        if (err) {
+            console.error("Error searching inventory:", err.message);
+            res.status(500).json({ error: err.message });
+        } else {
+            res.json(rows);
+        }
+    });
+});
+
+// 404 fallback
+app.use((req, res) => {
+    res.status(404).send("Sorry, can't find that!!!!!");
+});
+
+// Start server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

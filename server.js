@@ -53,7 +53,7 @@ app.post('/add-inventory', (req, res) => {
     });
 });
 
-// View inventory
+// View all inventory
 app.get('/inventory', (req, res) => {
     const sql = "SELECT * FROM inventory";
     db.all(sql, [], (err, rows) => {
@@ -62,6 +62,43 @@ app.get('/inventory', (req, res) => {
             res.status(500).json({ error: err.message });
         } else {
             res.json(rows);
+        }
+    });
+});
+
+// Get single inventory item by ID
+app.get('/inventory/:id', (req, res) => {
+    const id = req.params.id;
+    console.log("Requested inventory ID:", id);
+    db.get("SELECT * FROM inventory WHERE id = ?", [id], (err, row) => {
+        if (err) {
+            console.error("Error retrieving item:", err.message);
+            res.status(500).json({ error: err.message });
+        } else if (!row) {
+            res.status(404).json({ error: "Item not found" });
+        } else {
+            res.json(row);
+        }
+    });
+});
+
+// Update existing inventory item
+app.put('/update-inventory/:id', (req, res) => {
+    const id = req.params.id;
+    const { make, model, description, cost, quantity, status } = req.body;
+
+    const sql = `UPDATE inventory SET make = ?, model = ?, description = ?, cost = ?, quantity = ?, status = ? WHERE id = ?`;
+    db.run(sql, [make, model, description, cost, quantity, status, id], function(err) {
+        if (err) {
+            console.error("Error updating item:", err.message);
+            res.status(500).json({ error: err.message });
+            return;
+        }
+
+        if (this.changes === 0) {
+            res.status(404).json({ error: 'Item not found' });
+        } else {
+            res.json({ message: 'Item updated successfully' });
         }
     });
 });
